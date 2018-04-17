@@ -3,8 +3,11 @@ from flask import request
 from sklearn.externals import joblib
 import pandas as pd
 import os
+from flask_cors import CORS
 port = int(os.getenv('PORT', 8000))
 app = Flask(__name__)
+CORS(app)
+
 @app.route('/predict', methods=['POST'])
 def predict():
     json_ = [request.json]
